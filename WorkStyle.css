@@ -1,0 +1,475 @@
+/* Colors and Typeface ---------------------------------------------------------------------------------*/
+:root {
+  /* Primary brand colors */
+  --color-black: #272727;
+  --color-white: #f7f7ff; 
+  --color-gray: #c4c4c4;
+  --color-cerulean: #247ba1;
+  --color-gold: #ffca3a;
+  --color-coral: #ff595e;
+}
+/*font styles*/
+.oswald {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Navbar styling --------------------------------------------------------------------------------------*/
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
+}
+
+.logo-container img {
+  width: 225px;
+  height: auto;
+}
+
+.navbar {
+    display: flex;
+    align-items: center; 
+    margin-left: auto;
+}
+
+.navbar a {
+    font-family: "Oswald", sans-serif;
+    font-size: 20px;          
+    color: var(--color-black); 
+    margin: 0;
+    padding: 14px 16px;
+    text-decoration: none; 
+}
+
+.navbar a:hover {
+    color: var(--color-cerulean);
+}
+
+.navbar .icon {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .logo-container img {
+      width: 130px;
+      height: auto;
+    }
+    .navbar a {
+      font-family: "Oswald", sans-serif;
+      font-size: 15px;          
+      color: var(--color-black); 
+      margin: 0;
+      padding: 14px 16px;
+      text-decoration: none; 
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%; 
+    }
+    
+    .navbar a:not(:last-child) {
+        display: none;
+    }
+    
+    .navbar a.icon {
+        display: block;
+        margin-left: auto; 
+    }
+    
+    .navbar.responsive a:not(.icon) {
+        display: block;
+        text-align: right;
+    }
+}
+
+/* Hamburger Menu -------------------------------*/
+.container {
+  cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: var(--color-black);
+  margin: 6px 0;
+  transition: 0.5s;
+}
+
+.change .bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+}
+
+
+
+
+
+
+
+
+
+
+/* Work Section --------------------------------------------------------------------------------------*/
+.work-modals {
+  padding: 2rem;
+}
+ 
+.modal-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 2fr));
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+
+.open-modal {
+  display: block;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: center;
+}
+
+.open-modal img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.open-modal img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 25px 40px rgba(0,0,0,0.3);
+}
+
+/* ─── Dialog / Modal ─────────────────────────────── */
+dialog.modal {
+  border: none;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 700px;
+  width: 90vw;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+dialog.modal::backdrop {
+  background: rgba(0,0,0,0.6);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-title {
+  font-family: "whitney", sans-serif;
+  font-size: 24px;
+  color: var(--color-cerulean);
+  margin: 0;
+}
+
+.close-modal-btn {
+  background: transparent;
+  border: none;
+  font-family: "oswald", sans-serif;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--color-cerulean);
+  cursor: pointer;
+  padding: 0 0.25rem;
+  transition: color 0.2s;
+}
+
+.close-modal-btn:hover {
+  color: var(--color-coral);
+}
+
+/* modal specific styles -----------------------*/
+
+.case-study-divider {
+  font-family: 'whitney', sans-serif;
+  font-size: 1.5rem;
+  color: var(--color-cerulean);
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+.single-image-case-study {
+  display: flex;
+  justify-content: center;
+}
+
+.video-embed {
+  display: flex;
+  justify-content: center;
+}
+
+.case-study-split {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center; 
+}
+
+@media (max-width: 600px) {
+  .case-study-split {
+    margin-top: 2rem;
+    flex-direction: column;
+    align-items: center; 
+  }
+}
+
+.case-study-image {
+  flex: 1;
+  display: flex;
+  gap: .5rem;
+}
+
+.case-study-image img {
+  width: 100%;
+  height: auto;
+}
+
+.case-study-text {
+  flex: 1;
+  font-family: "whitney", sans-serif;
+  color: var(--color-black);
+}
+
+/* ─── Figma embed ────────────────────────────────── */
+#phone-container {
+    width: 350px; 
+    height: 650px; 
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 20px; /* Match inner screen corners */
+}
+
+#phone-frame {
+    width: 100%;
+    height: 100%;
+}
+
+/* Ensure the iframe fills its container */
+#phone-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none; /* Remove default iframe border */
+    border-radius: 20px; /* Match inner screen corners */
+    display: block;
+    ;
+}
+
+/* Ticket flip ---- */
+
+@media (min-width: 600px) {
+  .ticket-horizontal { 
+    display: block; 
+    max-width: 600px;
+  }
+  .ticket-vertical   { 
+    display: none; 
+  }
+}
+
+
+@media (max-width: 600px) {
+  .ticket-horizontal { 
+    display: none; 
+  }
+  .ticket-vertical   { 
+    display: block; 
+    max-width: 400px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Walking Dog Animation Styles--------------------------------------------------- */
+
+.dog-container {
+position: relative;
+bottom: -60px;
+/* Start position off-screen to the left */
+left: -100px;
+z-index: 100;
+/* Animation: walk across screen infinitely */
+animation: walkAcross 15s linear infinite;
+pointer-events: none; 
+}
+
+/* The dog image itself */
+.dog-gif {
+    width: 100px;
+    height: auto;
+    display: block;
+    /* Optional: Add a subtle drop shadow for depth */
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.279));
+}
+
+/* Animation keyframes */
+@keyframes walkAcross {
+    0% {
+        /* Start off-screen left */
+        left: -150px;
+    }
+    100% {
+        /* End off-screen right (100% + dog width) */
+        left: calc(100% + 150px);
+    }
+}
+
+/* Responsive sizing for smaller screens */
+@media (min-width: 480px) {
+    .dog-gif {
+        width: 300px;
+    }
+    
+    .dog-container {
+        left: -100px;
+        animation: walkAcrossSmall 15s linear infinite;
+    }
+    
+    @keyframes walkAcrossSmall {
+        0% {
+            left: -200px;
+        }
+        100% {
+            left: calc(100% + 100px);
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .dog-gif {
+        width: 250px;
+    }
+    
+    .dog-container {
+        left: -80px;
+        animation: walkAcrossMobile 15s linear infinite;
+    }
+    
+    @keyframes walkAcrossMobile {
+        0% {
+            left: -200px;
+        }
+        100% {
+            left: calc(100% + 80px);
+        }
+    }
+}
+
+/* Footer Section --------------------------------------------------------------------------------------*/
+
+.footer {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-cerulean);
+    color: var(--color-white);
+    text-align: center;
+    position: relative;
+    bottom: -10px;
+    width: 100vw;
+    margin-top: 0px;
+    padding: 0;
+    left: -8px;
+}
+
+.social-media-icons {
+    display: inline-flex;
+    align-items: center;
+}
+
+.social-media-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 0 5px;
+    line-height: 0;      /* eliminates hidden line-height space below images */
+}
+
+.social1, .social2 {
+    width: 30px;
+    height: auto;
+    display: block;
+}
+
+/*--mobile--*/
+@media screen and (max-width: 600px) {
+  .logo {
+    width: 45px;
+    height: auto;
+    margin: 0 10px;
+  }
+  .footer p {
+    font-family: oswald, sans-serif;
+    font-size: .65em;
+    color: var(--color-white);
+  }
+  .social-media-icons .social {
+    width: 20px;
+    height: auto;
+    margin: 0 10px;
+  }
+} 
+
+/*--desktop--*/
+@media screen and (min-width: 600px) {
+  .logo {
+    width: 65px;
+    height: auto;
+    margin: 0 20px;
+  }
+  .footer p {
+    font-family: oswald, sans-serif;
+    font-size: .75em;
+    color: var(--color-white);
+  }
+  .social-media-icons .social {
+    width: 30px;
+    height: auto;
+    margin: 0 10px;
+  }
+}
+

@@ -1,0 +1,518 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="referrer" content="strict-origin-when-cross-origin">
+
+        
+        <title>Sofinelli_Portfolio</title>
+        <link rel="stylesheet" href="WorkStyle.css">
+
+        <!--- Oswald Font --------->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- Header -------------------------------------------------------------------------------------------------------------->
+        <header class="site-header">
+
+            <div class="logo-container">
+                <a href="Portfolio.html"><img src="Assets/Sofinelli.svg" alt="Logo"></a>
+            </div>
+
+            <nav class="navbar" id="myNavbar">
+                <a href="Portfolio.html">Home</a>
+                <a href="Work.html">Work</a>
+                <a href="Contact.html">Contact</a>
+                <a href="PortfolioScript.js" class="icon" onclick="toggleNavbar(); myFunction(this)">
+                    <div class="container">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </a>
+            </nav>
+
+        </header>
+        
+        <section class="work-modals">
+
+            <div class="modal-container">
+            
+                <!-- Project 1: Jetling -->
+                <button class="open-modal" data-modal-target="#jetling-modal">
+                <img src="Assets/Jetling/JetlingApp.png" alt="Jetling Airlines project">
+                </button>
+                <!-- Project 2: Beidler Forest -->
+                <button class="open-modal" data-modal-target="#beidler-modal">
+                <img src="Assets/Beidler/BeidlerIcon.jpg" alt="Beidler Forest project">
+                </button>
+                <!-- Project 3: Sales Booklet-->
+                <button class="open-modal" data-modal-target="#sales-modal">
+                <img src="Assets/SalesBooklet/SalesBookletIcon.jpg" alt="Sales Booklet project">
+                </button>
+                <!-- Project 4: YardFather-->
+                <button class="open-modal" data-modal-target="#yardfather-modal">
+                <img src="Assets/YardFather/YardFatherIcon.jpg" alt="YardFather project">
+                </button>
+                <!-- Project 5: Return-->
+                <button class="open-modal" data-modal-target="#return-modal">
+                <img src="Assets/Return/RecieptIcon.jpg" alt="Return project">
+                </button>
+                <!-- Project 6: ShockinglyHot-->
+                <button class="open-modal" data-modal-target="#shockinglyhot-modal">
+                <img src="Assets/ShockinglyHot/ShockinglyHotIcon.jpeg" alt="Shockingly Hot Sauce project">
+                </button>
+                <!-- Project 7: Frog In My Throat-->
+                <button class="open-modal" data-modal-target="#frog-modal">
+                <img src="Assets/FrogInMyThroat/FrogInMyThroatIcon.jpg" alt="Frog In My Throat project">
+                </button>
+                <!-- Project 8: MSN-->
+                <button class="open-modal" data-modal-target="#msn-modal">
+                <img src="Assets/MSN/MSNIcon.jpg" alt="MSN project">
+                </button>
+            
+            </div>
+            
+        
+            <!-- Jetling modal ----------------------------------------------------------------------->
+            <dialog class="modal" id="jetling-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title">Jetling Airlines</h5>
+                    <button class="close-modal-btn" aria-label="Close">&times;</button>
+                </div>
+
+                <div class="case-study">
+
+                    <!-- Row 1: plane, logo/text -->
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/Jetling/JetlingPlane.png" alt="Jetling Airlines project">
+                        </div>
+
+                        <div class="case-study-text">
+                            <img src="Assets/Jetling/JetlingLogo.png" alt="Jetling Airlines project" style="max-width: 100px">
+                            <p>Jetling Airlines is the child company of Delta Airlines that serves exclusively unaccompanied minors. This airline provides a dedicated space for little passengers to feel safe and comfortable during their journey. Designed to be accessible to both children and their caretakers alike.</p>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 (App): text left, prototype right -->
+                    <div class="case-study-split">
+                        <div class="case-study-text">
+                            <h4>Mobile App</h4>
+                            <p style="margin-bottom: 60px;">This interactive prototype demonstrates the core features and user flow of the Jetling Mobile App. Guardians can manage the children registered on their account in their account profile. Once their children are registered, parents can book their child's flight. When Designing the app, I wanted to create an interface parents could easily navigate. Although the airline is designed for children, the app is intended to be managed by guardians.</p>
+                            <img src="Assets/Jetling/Wireframe.png" alt="Jetling Airlines app wireframe" style="max-width: 100%; border-radius: 20px;">
+                        </div>
+                        
+                        <div id="phone-container">
+                            <div id="phone-frame">
+                                <iframe
+                                    src="https://embed.figma.com/proto/t7ishV757kMEY0anJULL0g/jetling?node-id=13-3&p=f&scaling=scale-down&content-scaling=fixed&page-id=4%3A3&starting-point-node-id=13%3A3&embed-host=share"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 3: Logo and Mascot -->
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/Jetling/PaperPlaneIcon.png" alt="Jetling Paper Plane Icon" style="width: 400px; height: auto; margin: 0 auto;">
+                        </div>
+
+                        <div class="case-study-image">
+                            <img src="Assets/Jetling/Jet.png" alt="Jetling Mascot">
+                        </div>
+                        
+                        <div class="case-study-text">
+                            <h4>Logo and Mascot</h4>
+                            <p>It was important the visuals of the airline reflected the fun and playful nature of the brand. The logo is a simple paper plane icon, which is a universal symbol of flight and childhood. The mascot, Jet, is a friendly and adventurous lion cub inspired by Dusty the Delta Air Lion who was retired in the late nineties. </p>
+                        </div>
+                    </div>
+                    
+                     <!-- Row 4: Ticket Design  -->
+                    <div class="single-image-case-study">
+                        <img class="ticket-horizontal" src="Assets/Jetling/JetlingTicketHorizontal.png" alt="ticket" />
+                        <img class="ticket-vertical" src="Assets/Jetling/JetlingTicketVertical.png" alt="ticket" />
+                    </div>
+
+                    <!-- Row 5: Widgets  -->
+                    <div class="case-study-split">
+                        
+                        <div class="case-study-image">
+                            <img src="Assets/Jetling/Widgets.png" alt="Widget 2" style="width: 70%; height: auto; margin: 0 auto;">
+                        </div>
+
+                        <div class="case-study-text">
+                            <img src="Assets/Jetling/Big Widget.png" alt="Widget 1" style="width: 50%; height: auto; margin: 0 auto;">
+                            <h4>Widgets</h4>
+                            <p>These widgets are designed to provide quick access to important information and features of the Jetling Mobile App. These tools allow parents to easily view where their passanger is located at any given time.</p>
+                        </div>
+                    </div>
+                </div>
+ 
+            </dialog>
+            
+
+            <!-- Beidler Forest modal ----------------------------------------------------------------------------------->
+            <dialog class="modal" id="beidler-modal">
+                <div class="modal-header">
+                <h5 class="modal-title">Beidler Forest</h5>
+                <button class="close-modal-btn" aria-label="Close">&times;</button>
+                </div>
+                <!-- modal content here -->
+
+                <div class="case-study">
+
+                    <!-- Row 1: Logo and Text -->
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/Beidler/Beidler_logo.png" alt="Beidler Forest project" style="max-width: 400px">
+                        </div>
+
+                        <div class="case-study-text">
+                            <p>Beidler Forest is a nature reserve located in South Carolina that's apart of the Audobon Society. This Merchandise campaign was designed to make bird watching funny and exciting. By including the birds commonly found in the forest and putting them on motorcycles this campaign brings a unique twist to the traditional bird watching experience.</p>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Merchandise -->    
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/Beidler/MerchMenuBrand.jpg" alt="Beidler Forest Merchandise" style="width: 100%; height: auto; margin: 0 auto;"> 
+                        </div>
+                    </div>
+
+                    <!-- Row 3: TypeFace-->
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/Beidler/BirdieTypeface.png" alt="Beidler Forest TypeFace" style="width: 100%; height: auto; margin: 0 auto;">
+                        </div>
+                    </div>
+
+                    <!-- Row 4: Patterns -->
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/Beidler/MotoPattern.jpg" alt="Beidler Forest Patterns" style="width: 100%; height: auto; margin: 0 auto;">
+                        </div>
+                        <div class="case-study-image">
+                            <img src="Assets/Beidler/Spinelli_Alternative_merch_menu.jpg" alt="Beidler Forest Patterns" style="width: 100%; height: auto; margin: 0 auto;">
+                        </div>
+                        <div class="case-study-image">
+                            <img src="Assets/Beidler/SillyPattern.jpg" alt="Beidler Forest Patterns" style="width: 100%; height: auto; margin: 0 auto;">
+                        </div>
+                        <div class="case-study-image">
+                            <img src="Assets/Beidler/Spinelli_Majority_merch_menu.jpg" alt="Beidler Forest Patterns" style="width: 100%; height: auto; margin: 0 auto;">
+                        </div>
+                    </div>
+
+                    <!-- Row 5: Poster -->
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/Beidler/PosterMockup.png" alt="Beidler Forest Poster" style="width: 100%; height: auto; margin: 0 auto;">
+                        </div>
+                    </div>
+
+                </div>
+            </dialog>
+            
+           <!-- Sales Booklet modal -->
+            <dialog class="modal" id="sales-modal">
+                <div class="modal-header">
+                <h5 class="modal-title">Sales Booklet</h5>
+                <button class="close-modal-btn" aria-label="Close">&times;</button>
+                </div>
+                <!-- modal content here -->
+
+                <div class="case-study">
+
+                    <!-- Row 1: Logo and Text -->
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/SalesBooklet/MultipleBooklets.png" alt="Sales Booklet project" style="max-width: 400px">
+                        </div>  
+
+                        <div class="case-study-text">
+                            <p>During my internship at Compass Group, I was given the opportunity to turn a portion of their sales training into a booklet. The total number of pages included in the booklet was 32. The text from the following spread has been omitted for confidentiality reasons.</p>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Spreads -->
+                    <div class="case-study-image">
+                        <img src="Assets/SalesBooklet/Spread(1).jpg" alt="Sales Booklet Spread 1" style="width: 100%; height: auto; margin: 0 auto;">
+                    </div>
+
+                     <div class="case-study-image">
+                        <img src="Assets/SalesBooklet/Spread(2).jpg" alt="Sales Booklet Spread 1" style="width: 100%; height: auto; margin: 0 auto;">
+                    </div>
+
+                     <div class="case-study-image">
+                        <img src="Assets/SalesBooklet/Spread(3).jpg" alt="Sales Booklet Spread 1" style="width: 100%; height: auto; margin: 0 auto;">
+                    </div>
+
+                     <div class="case-study-image">
+                        <img src="Assets/SalesBooklet/Spread(4).jpg" alt="Sales Booklet Spread 1" style="width: 100%; height: auto; margin: 0 auto;">
+                    </div>
+
+                     <div class="case-study-image">
+                        <img src="Assets/SalesBooklet/Spread(5).jpg" alt="Sales Booklet Spread 1" style="width: 100%; height: auto; margin: 0 auto;">
+                    </div>
+
+                     <div class="case-study-image">
+                        <img src="Assets/SalesBooklet/Spread(6).jpg" alt="Sales Booklet Spread 1" style="width: 100%; height: auto; margin: 0 auto;">
+                    </div>
+
+                     <div class="case-study-image">
+                        <img src="Assets/SalesBooklet/Spread(7).jpg" alt="Sales Booklet Spread 1" style="width: 100%; height: auto; margin: 0 auto;">
+                    </div>
+
+                     <div class="case-study-image">
+                        <img src="Assets/SalesBooklet/Spread(8).jpg" alt="Sales Booklet Spread 1" style="width: 100%; height: auto; margin: 0 auto;">
+                    </div>
+
+                     <div class="case-study-image">
+                        <img src="Assets/SalesBooklet/Spread(9).jpg" alt="Sales Booklet Spread 1" style="width: 100%; height: auto; margin: 0 auto;">
+                    </div>
+            </dialog>
+            
+            <!-- YardFather modal -->
+            <dialog class="modal" id="yardfather-modal">
+                <div class="modal-header">
+                <h5 class="modal-title">YardFather</h5>
+                <button class="close-modal-btn" aria-label="Close">&times;</button>
+                </div>
+                <!-- modal content here -->
+
+                <div class="case-study">
+
+                    <!-- Row 1: Text -->
+
+                    <div class="case-study-split">
+                        <div class="case-study-text">
+                            <p>The Yardfather is a short comic based on childhood experiences making home movies. Based on an actual home movie I made with my siblings.</p>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Pages 1 and 2 -->
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/YardFather/Page1.jpg" alt="YardFather page 1" style="max-width: 400px">
+                        </div>
+                        <div class="case-study-image">
+                            <img src="Assets/YardFather/Page2.jpg" alt="YardFather page 2" style="max-width: 400px"> 
+                        </div>
+                    </div>  
+
+                    <!-- Row 3: Pages 3 and 4 -->
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/YardFather/Page3.jpg" alt="YardFather page 3" style="max-width: 400px">
+                        </div>
+                            <div class="case-study-image">
+                                <img src="Assets/YardFather/Page4.jpg" alt="YardFather page 4" style="max-width: 400px"> 
+                        </div>
+                    </div>  
+
+                    <!-- Row 4: Screenshots -->
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/YardFather/Screenshot(1).jpeg" alt="YardFather Screenshot 1" style="max-width: 400px">
+                        </div>
+                        <div class="case-study-image">
+                            <img src="Assets/YardFather/Screenshot(2).jpeg" alt="YardFather Screenshot 2" style="max-width: 400px"> 
+                        </div>
+                        <div class="case-study-image">
+                            <img src="Assets/YardFather/Screenshot(3).jpeg" alt="YardFather Screenshot 3" style="max-width: 400px">  
+                        </div>
+                    </div>
+            </dialog>
+
+            <!-- Return modal -->
+            <dialog class="modal" id="return-modal">
+                <div class="modal-header">
+                <h5 class="modal-title">Return</h5>
+                <button class="close-modal-btn" aria-label="Close">&times;</button>
+                </div>
+                <!-- modal content here -->
+
+                <div class="case-study">
+
+                    <!-- Row 1: Text -->
+                    <div class="case-study-split">
+                        <div class="case-study-text">
+                            <p>Return is an artbook that explores accepting the parts of yourself that may feel out of place.</p>
+                        </div>
+                        <div class="case-study-image">
+                            <img src="Assets/Return/Reciept.png" alt="Reciept" style="max-width: 400px">
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Return Image -->
+                     <div class="single-image-case-study">
+                         <img src="Assets/Return/Return_receipt_ 5.jpg" alt="Return Image" style="max-width: 60%; height: auto;">
+                     </div>
+
+                </div>
+            </dialog>
+
+            <!-- Shockingly Hot modal -->
+            <dialog class="modal" id="shockinglyhot-modal">
+                <div class="modal-header">
+                <h5 class="modal-title">Shockingly Hot Sauce</h5>
+                <button class="close-modal-btn" aria-label="Close">&times;</button>
+                </div>
+                <!-- modal content here -->
+
+                <div class="case-study">
+
+                    <!-- Row 1: Text and logo -->
+                    
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/ShockinglyHot/Logo.png" alt="Shockingly Hot Sauce project" style="max-width: 400px">
+                        </div>
+                        <div class="case-study-text">
+                            <p>Shockingly Hot Sauce is a branding project for a spicy hot sauce line.</p>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Assets -->
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/ShockinglyHot/BottleLogo.png" alt="Shockingly Hot Sauce Asset 1" style="max-width: 400px">
+                        </div>
+                        <div class="case-study-image">
+                            <img src="Assets/ShockinglyHot/Flame.png" alt="Shockingly Hot Sauce Asset 2" style="max-width: 400px">
+                        </div>
+                        <div class="case-study-image">
+                            <img src="Assets/ShockinglyHot/SH.png" alt="Shockingly Hot Sauce Asset 3" style="max-width: 400px">
+                        </div>
+                    </div>
+
+                    <!-- Row 3: Packaging -->
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/ShockinglyHot/Socks.png" alt="Shockingly Hot Sauce Packaging" style="width: 100%; height: auto; margin: 0 auto;">
+                        </div>
+                        
+                        <div class="case-study-image">
+                            <img src="Assets/ShockinglyHot/MockupBottle.png" alt="Shockingly Hot Sauce Packaging Mockup" style="width: 100%; height: auto; margin: 0 auto;">
+                        </div>
+
+                        <div class="case-study-image">
+                            <img src="Assets/ShockinglyHot/SaucePacket.png" alt="Shockingly Hot Sauce Packaging Mockup" style="width: 100%; height: auto; margin: 0 auto;">
+                        </div>
+                    </div>
+
+                     <!-- Row 4: Poster -->
+                    <img src="Assets/ShockinglyHot/Letterhead.jpg" alt="Shockingly Hot Sauce Poster" style="width: 100%; height: auto; margin: 0 auto;">
+                </div>
+            </dialog>
+
+            <!-- Frog In My Throat modal -->
+            <dialog class="modal" id="frog-modal">
+                <div class="modal-header">
+                <h5 class="modal-title">Frog In My Throat</h5>
+                <button class="close-modal-btn" aria-label="Close">&times;</button>
+                </div>
+                <!-- modal content here -->
+
+                <div class="case-study">
+
+                    <!-- Row 1: Text and logo -->
+                    
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/FrogInMyThroat/Logo.png" alt="Frog In My Throat project" style="max-width: 400px">
+                        </div>
+                        <div class="case-study-text">
+                            <p>Frog In My Throat is felt stop motion short film depicting a young girl coming to terms with her anxiety disorder. Made with a younger audience in mind.</p>
+                        </div>
+                    </div>
+
+                    <div class="video-embed">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/yo9GOrbjeXA?si=v-s0nvY-ninR7eix" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+            </dialog>
+
+            <!-- MSN modal -->
+            <dialog class="modal" id="msn-modal">
+                <div class="modal-header">
+                <h5 class="modal-title">Methodist Student Network</h5>
+                <button class="close-modal-btn" aria-label="Close">&times;</button>
+                </div>
+                <!-- modal content here -->
+
+                <div class="case-study">
+
+                    <!-- Row 1: Text and logo -->
+                    
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/MSN/MSNLogo.jpeg" alt="Methodist Student Network project" style="max-width: 400px">
+                        </div>
+                        <div class="case-study-text">
+                            <p>Methodist Student Network is a student organization at the University of South Carolina. These three designs were made for clothing items for members.</p>
+                        </div>
+                    </div>
+
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/MSN/MSNBuildingBackDesign.png" alt="Methodist Student Network Design 1" style="max-width: 400px">
+                        </div>
+
+                        <div class="case-study-image">
+                            <img src="Assets/MSN/BothDesigns.png" alt="Methodist Student Network Design example" style="max-width: 400px">
+                        </div>
+
+                        <div class="case-study-image">
+                            <img src="Assets/MSN/MSNInterior.png" alt="Methodist Student Network Design 2" style="max-width: 400px">
+                        </div>
+                    </div>
+
+                    <div class="case-study-split">
+                        <div class="case-study-image">
+                            <img src="Assets/MSN/MicahDesign.JPG" alt="Methodist Student Network Mockup 1" style="width: 100%; height: auto; margin: 0 auto;"> 
+                        </div>
+
+                        <div class="case-study-image">
+                            <img src="Assets/MSN/Baby.png" alt="Methodist Student Network Mockup 2" style="width: 100%; height: auto; margin: 0 auto;">  
+                        </div>
+
+                    
+                </div>
+
+            </dialog>
+            
+                
+        </section>
+
+        <script src="WorkScript.js"></script>
+
+    </body>
+
+
+    <!-- Walking dog element --------------------------------------------------->
+    <div class="dog-container">
+        <img src="Assets/GiuseppeWalk.gif" alt="Walking dog" class="dog-gif">
+    </div>
+
+    <footer>
+        <section class="footer">
+            <span><img src="Assets/Sofinelli(WhiteS).png" alt="Logo" class="logo"></span>
+            <span class="vertical-line-footer">
+                <div><p>© 2026 Sofinelli Studios. All rights reserved.</p></div>
+            </span>
+            <span class="social-media-icons">
+                <a href="https://www.instagram.com/sofinelli_art/" target="_blank"><img src="Assets/instagram-white-icon.webp" alt="Instagram Icon" class="social1"></a>
+                <a href="https://www.linkedin.com/in/sofia-c-spinelli/" target="_blank"><img src="Assets/linkedin-app-white-icon.webp" alt="LinkedIn Icon" class="social2"></a>
+            </span>
+        </section>
+    </footer>
+
+
+    
+</html>

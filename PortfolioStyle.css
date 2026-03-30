@@ -1,0 +1,490 @@
+/* Colors and Typeface ---------------------------------------------------------------------------------*/
+:root {
+  /* Primary brand colors */
+  --color-black: #272727;
+  --color-white: #f7f7ff; 
+  --color-gray: #c4c4c4;
+  --color-cerulean: #247ba1;
+  --color-gold: #ffca3a;
+  --color-coral: #ff595e;
+}
+/*font styles*/
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+
+/* Navbar styling --------------------------------------------------------------------------------------*/
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
+}
+
+.logo-container img {
+  width: 225px;
+  height: auto;
+}
+
+.navbar {
+    display: flex;
+    align-items: center; 
+    margin-left: auto;
+}
+
+.navbar a {
+    font-family: "Oswald", sans-serif;
+    font-size: 20px;          
+    color: var(--color-black); 
+    margin: 0;
+    padding: 14px 16px;
+    text-decoration: none; 
+}
+
+.navbar a:hover {
+    color: var(--color-cerulean);
+}
+
+.navbar .icon {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .logo-container img {
+      width: 130px;
+      height: auto;
+    }
+    .navbar a {
+      font-family: "Oswald", sans-serif;
+      font-size: 15px;          
+      color: var(--color-black); 
+      margin: 0;
+      padding: 14px 16px;
+      text-decoration: none; 
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%; 
+    }
+    
+    .navbar a:not(:last-child) {
+        display: none;
+    }
+    
+    .navbar a.icon {
+        display: block;
+        margin-left: auto; 
+    }
+    
+    .navbar.responsive a:not(.icon) {
+        display: block;
+        text-align: right;
+    }
+}
+
+/* Hamburger Menu -------------------------------*/
+.container {
+  cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: var(--color-black);
+  margin: 6px 0;
+  transition: 0.5s;
+}
+
+.change .bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+}
+
+/* Home Section --------------------------------------------------------------------------------------*/
+
+/*--profile image-----------------------------------*/
+
+/*--mobile--*/
+@media screen and (max-width: 600px) {
+  .portrait-wrap {
+    width: 250px;    
+    height: 250px;    
+    margin: 40px auto;
+    touch-action: none;
+    user-select: none;
+  }
+  .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile-container img {
+    max-width: 200px;
+    height: auto;
+  }
+}
+/*--desktop--*/
+@media screen and (min-width: 600px) {
+  .portrait-wrap {
+    width: 350px;   
+    height: 350px;   
+    margin: 40px auto;
+    touch-action: none;
+    user-select: none;
+  }
+  .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile-container img {
+    max-width: 375px;
+    height: auto;
+  }
+}
+
+/*--greeting text-----------------------------------*/
+
+/*--mobile--*/
+@media screen and (max-width: 600px) {
+  .intro-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+  }
+} 
+
+/*--desktop--*/
+@media screen and (min-width: 600px) {
+  .intro-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+  }
+}
+
+.intro-text-container h1 {
+    font-family: oswald, sans-serif;
+    font-size: 1.90em;
+    color: var(--color-black);
+}
+
+.vertical-line {
+  display: inline-block; 
+  width: 3px;           
+  height: 2.5em;          
+  background-color: var(--color-cerulean); 
+  margin: 0 10px;      
+  vertical-align: middle;
+}
+
+
+.small-text p {
+  margin: 0;
+  line-height: 1.5; 
+  font-family: oswald, sans-serif;
+  font-size: .90em;
+}
+
+.rotating-text-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: oswald, sans-serif;
+    font-size: .90em;
+    color: var(--color-black)
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(10px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+.text-animation {
+    font-family: oswald, sans-serif;
+    font-size: 1em;
+    color: var(--color-black);
+    display: inline-block;
+    animation: fadeInOut 2.5s ease-in-out;
+}
+
+/* About Section --------------------------------------------------------------------------------------*/
+
+.about-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/*--mobile--*/
+@media screen and (max-width: 600px) {
+ .about-text-container p{
+    font-family: oswald, sans-serif;
+    font-size: .75em;
+    color: var(--color-black);
+    justify-items: center;
+    max-width: 255px; 
+    margin: 40px 20px;
+  }
+} 
+
+/*--desktop--*/
+@media screen and (min-width: 600px) {
+  .about-text-container p{
+    font-family: oswald, sans-serif;
+    font-size: .75em;
+    color: var(--color-black);
+    justify-items: center;
+    max-width: 390px; 
+    margin: 40px 20px;
+  }
+}
+
+/*--resume button--*/
+.resume-button-container {
+    background: var(--color-cerulean);
+    width: fit-content;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 10px 20px;
+}
+
+.resume-button {
+    font: 100% oswald, sans-serif;
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.resume-button-container:hover {
+    background: var(--color-gold);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.resume-button-container:hover .resume-button {
+    color: var(--color-black);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Contact Section --------------------------------------------------------------------------------------*/
+
+#thankYouMessage h2{
+    font-family: oswald, sans-serif;
+    font-size: 1.5em;
+    color: var(--color-cerulean);
+    text-align: center;
+    margin-top: 20px;
+}
+
+#thankYouMessage p{
+    font-family: oswald, sans-serif;
+    font-size: 1em;
+    color: var(--color-black);
+    text-align: center;
+    margin-top: 10px;
+}
+
+/*--Slideshow--------------------------------------------------------------------------------*/
+
+.slider-container {
+  max-width: 500px;
+  height: auto;
+  overflow: hidden;
+  border: var(--color-cerulean) 3px solid;
+  border-radius: 20px;
+  margin: auto;
+  margin-top: 80px;
+}
+
+.slider {
+  display: flex;
+  width: 900%; /* 100% * 9 images */
+  animation: slide 40s infinite; /* ~5 seconds per image */
+}
+
+.slider img {
+  width: 11.11%; /* 100% / 9 images */
+  object-fit: cover;
+}
+
+@keyframes slide {
+  /* Each step is 12.5% (100 / 8 unique images) */
+  0%, 10.5%   { transform: translateX(0); }
+  12.5%, 23%  { transform: translateX(-11.11%); }
+  25%, 35.5%  { transform: translateX(-22.22%); }
+  37.5%, 48%  { transform: translateX(-33.33%); }
+  50%, 60.5%  { transform: translateX(-44.44%); }
+  62.5%, 73%  { transform: translateX(-55.55%); }
+  75%, 85.5%  { transform: translateX(-66.66%); }
+  87.5%, 98%  { transform: translateX(-77.77%); }
+  100%        { transform: translateX(-88.88%); } /* Jump to clone/start */
+}
+
+
+/* Walking Dog Animation Styles--------------------------------------------------- */
+
+.dog-container {
+max-width: 100px;
+position: relative;
+bottom: -60px;
+left: -100px;
+animation: walkAcross 15s linear infinite;
+pointer-events: none; 
+}
+
+.dog-gif {
+    width: 100px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.279));
+}
+
+/* Animation keyframes */
+@keyframes walkAcross {
+    0% {
+        /* Start off-screen left */
+        left: -150px;
+    }
+    100% {
+        /* End off-screen right (100% + dog width) */
+        left: calc(100% + 5px);
+    }
+}
+
+/* Responsive sizing for smaller screens */
+@media (min-width: 480px) {
+    .dog-gif {
+        width: 300px;
+    }
+    
+    .dog-container {
+        left: -100px;
+        animation: walkAcrossSmall 15s linear infinite;
+    }
+    
+    @keyframes walkAcrossSmall {
+        0% {
+            left: -200px;
+        }
+        100% {
+            left: calc(100% + 5px);
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .dog-gif {
+        width: 250px;
+    }
+    
+    .dog-container {
+        left: -80px;
+        animation: walkAcrossMobile 15s linear infinite;
+    }
+    
+    @keyframes walkAcrossMobile {
+        0% {
+            left: -200px;
+        }
+        100% {
+            left: calc(100% + 5px);
+        }
+    }
+}
+
+
+/* Footer Section --------------------------------------------------------------------------------------*/
+
+.footer {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-cerulean);
+    color: var(--color-white);
+    text-align: center;
+    position: relative;
+    bottom: -10px;
+    width: 100vw;
+    margin-top: 0px;
+    padding: 0;
+
+}
+
+.social-media-icons {
+    display: inline-flex;
+    align-items: center;
+}
+
+.social-media-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 0 5px;
+    line-height: 0;     
+}
+
+.social1, .social2 {
+    width: 30px;
+    height: auto;
+    display: block;
+}
+
+/*--mobile--*/
+@media screen and (max-width: 600px) {
+  .logo {
+    width: 45px;
+    height: auto;
+    margin: 0 10px;
+  }
+  .footer p {
+    font-family: oswald, sans-serif;
+    font-size: .65em;
+    color: var(--color-white);
+  }
+  .social-media-icons .social {
+    width: 20px;
+    height: auto;
+    margin: 0 10px;
+  }
+} 
+
+/*--desktop--*/
+@media screen and (min-width: 600px) {
+  .logo {
+    width: 65px;
+    height: auto;
+    margin: 0 20px;
+  }
+  .footer p {
+    font-family: oswald, sans-serif;
+    font-size: .75em;
+    color: var(--color-white);
+  }
+  .social-media-icons .social {
+    width: 30px;
+    height: auto;
+    margin: 0 10px;
+  }
+}

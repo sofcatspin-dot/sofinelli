@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        
+        <title>Sofinelli_Portfolio</title>
+        <link rel="stylesheet" href="PortfolioStyle.css">
+
+        <!--- Oswald Font --------->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    
+       <style>
+
+            /* Portrait with Moving Eyes Styles--------------------------------------------------- */
+            .portrait-wrap {
+                position: relative;
+                width: 350px;     /* set to your image width */
+                height: 350px;    /* set to your image height */
+                margin: 40px auto;
+                touch-action: none;
+                user-select: none;
+            }
+
+            /* pupils image (contains both pupils) - sits behind the face overlay */
+            .pupils-img {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                transform-origin: center center;
+                will-change: transform;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            /* face overlay with transparent eye-holes */
+            .face-img {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none; /* let pointer events pass to container */
+                z-index: 2;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <!-- Header -------------------------------------------------------------------------------------------------------------->
+        <header class="site-header">
+
+            <div class="logo-container">
+                <a href="Portfolio.html"><img src="Assets/Sofinelli.svg" alt="Logo"></a>
+            </div>
+
+            <nav class="navbar" id="myNavbar">
+                <a href="Portfolio.html">Home</a>
+                <a href="Work.html">Work</a>
+                <a href="Contact.html">Contact</a>
+                <a href="javascript:void(0);" class="icon" onclick="toggleNavbar(); myFunction(this)">
+                    <div class="container">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </a>
+            </nav>
+
+        </header>
+
+        <!-- Intro Section ------------------------------------------------------------------------------------------------------->
+        <section class="intro-section" id="home">
+
+            <!-- Profile Image ----------------------------------------------------------->
+            <div class="portrait-wrap" id="portrait">
+                <!-- pupils.png should contain both pupils placed in their correct positions -->
+                <img id="pupilsImg" class="pupils-img" src="Assets/Eyes.png" />
+                <!-- face-top.png is the portrait with transparent eye-holes -->
+                <img id="faceImg" class="face-img" src="Assets/Face.png" alt="Portrait" />
+            </div>
+
+            <script>
+                (function () {
+                    const wrap = document.getElementById('portrait');
+                    const pupilsImg = document.getElementById('pupilsImg');
+
+                    const IMG_WIDTH = wrap.clientWidth;
+                    const IMG_HEIGHT = wrap.clientHeight;
+
+                    const eyeCenters = {
+                        left:  { x: IMG_WIDTH * 0.36, y: IMG_HEIGHT * 0.42 },
+                        right: { x: IMG_WIDTH * 0.64, y: IMG_HEIGHT * 0.42 }
+                    };
+
+                    // How far (in pixels) the pupils-image layer can move. This is the max offset
+                    // applied to the pupils image (not each pupil independently).
+                    const MAX_LAYER_OFFSET = Math.min(IMG_WIDTH, IMG_HEIGHT) * 0.01; // 3-6% looks good
+
+                    // Lerp smoothing (0..1). Lower is smoother/slower.
+                    const LERP = 0.18;
+
+                    // When pointer is very near the face center, return to neutral
+                    const NEAR_CENTER_THRESHOLD = Math.min(IMG_WIDTH, IMG_HEIGHT) * 0.06;
+
+                    // Respect reduced motion preference
+                    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                    // Runtime state
+                    const target = { x: IMG_WIDTH / 2, y: IMG_HEIGHT / 2 };
+                    const state = { tx: 0, ty: 0 }; // current transform applied to pupilsImg
+                    let raf = null;
+
+                    // helpers
+                    function lerp(a, b, t) { return a + (b - a) * t; }
+
+                    // compute desired per-eye pupil center (clamped at MAX_LAYER_OFFSET)
+                    function desiredOffsetsForTarget(tgt) {
+                        // For each eye compute the vector from eyeCenter to tgt; clamp its length to MAX_LAYER_OFFSET.
+                        function vec(eye) {
+                        const dx = tgt.x - eye.x;
+                        const dy = tgt.y - eye.y;
+                        const dist = Math.hypot(dx, dy);
+                        if (dist < 1e-6) return { x: 0, y: 0 };
+                        const scale = Math.min(1, MAX_LAYER_OFFSET / dist);
+                        return { x: dx * scale, y: dy * scale };
+                        }
+                        const vL = vec(eyeCenters.left);
+                        const vR = vec(eyeCenters.right);
+                        // Average the two vectors to produce a single offset for the pupils image.
+                        return { x: (vL.x + vR.x) / 2, y: (vL.y + vR.y) / 2 };
+                    }
+
+                    // convert client event to image-space position
+                    function setTargetFromEvent(ev) {
+                        const rect = wrap.getBoundingClientRect();
+                        let clientX, clientY;
+                        if (ev.touches && ev.touches[0]) {
+                        clientX = ev.touches[0].clientX;
+                        clientY = ev.touches[0].clientY;
+                        } else {
+                        clientX = ev.clientX;
+                        clientY = ev.clientY;
+                        }
+                        const x = ((clientX - rect.left) / rect.width) * IMG_WIDTH;
+                        const y = ((clientY - rect.top) / rect.height) * IMG_HEIGHT;
+                        target.x = Math.max(0, Math.min(IMG_WIDTH, x));
+                        target.y = Math.max(0, Math.min(IMG_HEIGHT, y));
+                    }
+
+                    function animate() {
+                        // if reduced-motion, keep neutral
+                        if (reduceMotion) {
+                        state.tx = lerp(state.tx, 0, 0.25);
+                        state.ty = lerp(state.ty, 0, 0.25);
+                        } else {
+                        // If pointer is near center, go neutral
+                        const cx = IMG_WIDTH / 2, cy = IMG_HEIGHT / 2;
+                        const dToCenter = Math.hypot(target.x - cx, target.y - cy);
+                        if (dToCenter < NEAR_CENTER_THRESHOLD) {
+                            // gently return to center
+                            state.tx = lerp(state.tx, 0, LERP);
+                            state.ty = lerp(state.ty, 0, LERP);
+                        } else {
+                            const desired = desiredOffsetsForTarget(target);
+                            // note: we invert offsets when applying to the layer so pupils appear to look toward target
+                            // (because moving the pupils layer right will visually move pupils right relative to face holes)
+                            // Use lerp for smoothness
+                            state.tx = lerp(state.tx, desired.x, LERP);
+                            state.ty = lerp(state.ty, desired.y, LERP);
+                        }
+                        }
+
+                        // apply transform (we translate the pupils image by the averaged vector)
+                        // keep transforms small to avoid breaking alignment with the face overlay
+                        pupilsImg.style.transform = `translate(${state.tx.toFixed(2)}px, ${state.ty.toFixed(2)}px)`;
+
+                        raf = requestAnimationFrame(animate);
+                    }
+
+                    // Event handlers
+                    function onPointerMove(e) { setTargetFromEvent(e); }
+                    function onPointerDown(e) { setTargetFromEvent(e); }
+                    function onLeave() {
+                        // return to center when pointer leaves
+                        target.x = IMG_WIDTH / 2;
+                        target.y = IMG_HEIGHT / 2;
+                    }
+
+                    // Attach listeners
+                    wrap.addEventListener('pointermove', onPointerMove);
+                    wrap.addEventListener('pointerdown', onPointerDown);
+                    wrap.addEventListener('pointerleave', onLeave);
+                    window.addEventListener('pointerup', onLeave);
+
+                    wrap.addEventListener('touchmove', onPointerMove, { passive: true });
+                    wrap.addEventListener('touchstart', onPointerDown, { passive: true });
+
+                    // start loop
+                    raf = requestAnimationFrame(animate);
+
+                    // cleanup (if you later integrate into SPA unmount)
+                    window.addEventListener('unload', () => {
+                        cancelAnimationFrame(raf);
+                        wrap.removeEventListener('pointermove', onPointerMove);
+                    });
+
+        
+                })();
+            </script>
+
+        
+            <!-- Intro Text -------------------------------------------------------------->
+            <span class="intro-text-container">
+                <span><h1>Hey There!</h1></span>
+                <span class="vertical-line"></span>
+                <div class="small-text" >
+                    <p>My name is Sofia.</p>
+                    <div class="rotating-text-container">
+                        <p>I'm <span id="rotating-text">a designer.</span></p>
+                    </div>
+                </div>
+            </span>
+
+            <!-- About ------------------------------------------------------------------->
+            <div class="about-text-container">
+                <p>Welcome to Sofinelli Studios. My name is Sofia Spinelli. I am a 2026 graduate of the Graphic Design + Illustration program at the University of South Carolina. I like to make art of all mediums but specialize in illustration, design, animation and web development. Creating meaningful and clear art is what I enjoy the most!</p>
+            </div>
+
+            <!--Resume Button---------------------------------------------------------------->
+            <div class="resume-button-container">
+                <a href="Assets/Spinelli_Resume.pdf" target="_blank" class="resume-button" style="text-decoration: none;">Resume</a>
+            </div>
+            
+            <!-- Slideshow -------------------------------------------------------------->
+             <a href="Work.html" class="slideshow-link" style="text-decoration: none;">
+                <div class="slider-container">
+                    <div class="slider">
+                        <img src="Assets/Slide Show/Beidler.jpg" alt="Image 1">
+                        <img src="Assets/Slide Show/Yardfather.jpg" alt="Image 2">
+                        <img src="Assets/Slide Show/Sauce.jpg" alt="Image 3">
+                        <img src="Assets/Slide Show/Return.jpg" alt="Image 4">
+                        <img src="Assets/Slide Show/Jetling.jpg" alt="Image 5">
+                        <img src="Assets/Slide Show/Film.jpg" alt="Image 6">
+                        <img src="Assets/Slide Show/MSN.jpg" alt="Image 7">
+                        <img src="Assets/Slide Show/Sales.jpg" alt="Image 8">
+                        <img src="Assets/Slide Show/Beidler.jpg" alt="1-clone"> <!-- Clone for seamless loop -->
+                    </div>
+                </div>
+            </a>
+
+        </section>
+
+        <script src="PortfolioScript.js"></script>
+
+    </body>
+
+    <!-- Walking dog element --------------------------------------------------->
+    <div class="dog-container">
+        <img src="Assets/GiuseppeWalk.gif" alt="Walking dog" class="dog-gif">
+    </div>
+
+    <footer>
+        <section class="footer">
+            <span><img src="Assets/Sofinelli(WhiteS).png" alt="Logo" class="logo"></span>
+            <span class="vertical-line-footer">
+                <div><p>© 2026 Sofinelli Studios. All rights reserved.</p></div>
+            </span>
+            <span class="social-media-icons">
+                <a href="https://www.instagram.com/sofinelli_art/" target="_blank"><img src="Assets/instagram-white-icon.webp" alt="Instagram Icon" class="social1"></a>
+                <a href="https://www.linkedin.com/in/sofia-c-spinelli/" target="_blank"><img src="Assets/linkedin-app-white-icon.webp" alt="LinkedIn Icon" class="social2"></a>
+            </span>
+        </section>
+    </footer>
+
+</html>
